@@ -103,7 +103,7 @@ const statsObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             animateCounter(document.getElementById('stat-years'), 3);
             animateCounter(document.getElementById('stat-tests'), 70);
-            animateCounter(document.getElementById('stat-engineers'), 350);
+            animateCounter(document.getElementById('stat-faster'), 50);
             statsObserver.disconnect();
         }
     });
@@ -134,8 +134,15 @@ navToggle?.addEventListener('click', () => {
 
 // ===== Navbar Scroll Effect =====
 const navbar = document.getElementById('navbar');
+const stickyContact = document.getElementById('sticky-contact');
+
 window.addEventListener('scroll', () => {
     navbar?.classList.toggle('scrolled', window.scrollY > 50);
+
+    // Show sticky contact button after scrolling past hero
+    if (stickyContact) {
+        stickyContact.classList.toggle('visible', window.scrollY > 600);
+    }
 });
 
 // ===== Scroll Animations =====
